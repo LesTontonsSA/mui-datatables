@@ -373,6 +373,23 @@ class TableFilter extends React.Component {
     const { classes, columns, options, customFooter, filterList, components = {} } = this.props;
     const textLabels = options.textLabels.filter;
 
+    if(options.filterType === "inline") {
+      return (
+        <>
+          {
+            components.TableToolbarCustomFilter ?
+            React.cloneElement(components.TableToolbarCustomFilter, [{handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters}])
+            :
+            <Grid container direction="row" justifyContent="flex-start" alignItems="center" spacing={4}>
+              {columns.map((column, index) => {
+                return this.renderMultiselect(column, index, components);
+              })}
+            </Grid>
+          }
+        </>
+      );
+    }
+
     return (
       <div className={classes.root}>
         <div className={classes.header}>
@@ -407,6 +424,8 @@ class TableFilter extends React.Component {
                 : filterType === 'textField'
                 ? this.renderTextField(column, index)
                 : filterType === 'custom'
+                ? this.renderCustomField(column, index)
+                : filterType === 'inline'
                 ? this.renderCustomField(column, index)
                 : this.renderSelect(column, index);
             }

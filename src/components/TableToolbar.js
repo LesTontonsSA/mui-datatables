@@ -429,7 +429,7 @@ class TableToolbar extends React.Component {
               }
             />
           )}
-          {!(options.filter === false || options.filter === 'false') && (
+          {!(options.filter === false || options.filter === 'false') && (options.filterType !== "inline" ?
             <Popover
               refExit={filterPopoverExit}
               hide={this.state.hideFilterPopover || options.filter === 'disabled'}
@@ -461,6 +461,19 @@ class TableToolbar extends React.Component {
                 />
               }
             />
+          :
+              <TableFilterComponent
+                customFooter={options.customFilterDialogFooter}
+                columns={columns}
+                options={options}
+                filterList={filterList}
+                filterData={filterData}
+                onFilterUpdate={filterUpdate}
+                onFilterReset={resetFilters}
+                handleClose={closeFilterPopover}
+                updateFilterByType={updateFilterByType}
+                components={components}
+              />
           )}
           {options.customToolbar && options.customToolbar({ displayData: this.props.displayData })}
         </div>

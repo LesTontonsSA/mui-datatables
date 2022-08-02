@@ -125,6 +125,7 @@ class MUIDataTable extends React.Component {
           options: PropTypes.shape({
             display: PropTypes.oneOf(['true', 'false', 'excluded', 'always', true, false]),
             empty: PropTypes.bool,
+            filterDisplay: PropTypes.string,
             filter: PropTypes.bool,
             sort: PropTypes.bool,
             print: PropTypes.bool,
@@ -140,7 +141,7 @@ class MUIDataTable extends React.Component {
                 display: PropTypes.func,
               }),
             ]),
-            filterType: PropTypes.oneOf(['dropdown', 'checkbox', 'multiselect', 'textField', 'custom']),
+            filterType: PropTypes.oneOf(['dropdown', 'checkbox', 'multiselect', 'textField', 'custom', 'inline']),
             customHeadRender: PropTypes.func,
             customBodyRender: PropTypes.func,
             customBodyRenderLite: PropTypes.func,
@@ -270,6 +271,7 @@ class MUIDataTable extends React.Component {
       TableToolbarSelect: DefaultTableToolbarSelect,
       Tooltip: MuiTooltip,
       icons: {},
+      TableToolbarCustomFilter: undefined,
     },
   };
 
