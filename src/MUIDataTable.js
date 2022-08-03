@@ -141,6 +141,7 @@ class MUIDataTable extends React.Component {
                 display: PropTypes.func,
               }),
             ]),
+            hideTitle: PropTypes.bool,
             filterType: PropTypes.oneOf(['dropdown', 'checkbox', 'multiselect', 'textField', 'custom', 'inline']),
             customHeadRender: PropTypes.func,
             customBodyRender: PropTypes.func,
@@ -257,7 +258,9 @@ class MUIDataTable extends React.Component {
 
   static defaultProps = {
     title: '',
-    options: {},
+    options: {
+      hideTitle: true,
+    },
     data: [],
     columns: [],
     components: {

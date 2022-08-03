@@ -326,7 +326,8 @@ class TableToolbar extends React.Component {
         className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.root : classes.fullWidthRoot}
         role={'toolbar'}
         aria-label={'Table Toolbar'}>
-        title ? ( <div className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.left : classes.fullWidthLeft}>
+        {
+          options.hideTitle ? ( <div className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.left : classes.fullWidthLeft}>
           {showSearch === true ? (
             options.customSearchRender ? (
               options.customSearchRender(searchText, this.handleSearch, this.hideSearch, options)
@@ -352,6 +353,7 @@ class TableToolbar extends React.Component {
             </div>
           )}
         </div> ) : <></>
+        }
         <div className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.actions : classes.fullWidthActions}>
           {!(options.search === false || options.search === 'false' || options.searchAlwaysOpen === true) && (
             <Tooltip title={search} disableFocusListener>
