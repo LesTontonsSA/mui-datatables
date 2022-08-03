@@ -271,7 +271,7 @@ class MUIDataTable extends React.Component {
       TableToolbarSelect: DefaultTableToolbarSelect,
       Tooltip: MuiTooltip,
       icons: {},
-      TableToolbarCustomFilter: undefined,
+      TableToolbarCustomFilter: () => <React.Fragment/>,
     },
   };
 
@@ -1835,6 +1835,7 @@ class MUIDataTable extends React.Component {
         TableResize,
         TableToolbar,
         TableToolbarSelect,
+        TableToolbarCustomFilter,
         DragDropBackend = HTML5Backend,
       },
     } = this.props;
