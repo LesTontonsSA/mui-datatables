@@ -379,12 +379,11 @@ class TableFilter extends React.Component {
       return (
         <>
           {
-            components.TableToolbarCustomFilter ?
-            components.TableToolbarCustomFilter({filterData:filterData, columns: columns, handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters})
-            :
             <Grid container direction="row" justifyContent="flex-start" alignItems="center" spacing={4}>
               {columns.map((column, index) => {
-                return this.renderMultiselect(column, index, components);
+                if(column.filter) {
+                  return this.renderMultiselect(column, index, components);
+                }
               })}
             </Grid>
           }
