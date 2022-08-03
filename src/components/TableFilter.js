@@ -96,6 +96,8 @@ class TableFilter extends React.Component {
     onFilterReset: PropTypes.func,
     /** Extend the style applied to components */
     classes: PropTypes.object,
+    /** custom TableToolbarCustomFilter */
+    children: PropTypes.any,
   };
 
   constructor(props) {
@@ -378,7 +380,7 @@ class TableFilter extends React.Component {
         <>
           {
             components.TableToolbarCustomFilter ?
-            React.cloneElement(components.TableToolbarCustomFilter, [{handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters}])
+            components.TableToolbarCustomFilter({handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters})
             :
             <Grid container direction="row" justifyContent="flex-start" alignItems="center" spacing={4}>
               {columns.map((column, index) => {
