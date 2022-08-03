@@ -340,7 +340,7 @@ class TableToolbar extends React.Component {
             )
           ) : typeof title !== 'string' ? (
             title
-          ) : (
+          ) : title ? (
             <div className={classes.titleRoot} aria-hidden={'true'}>
               <Typography
                 variant="h6"
@@ -350,6 +350,8 @@ class TableToolbar extends React.Component {
                 {title}
               </Typography>
             </div>
+          ) : (
+            <></>
           )}
         </div>
         <div className={options.responsive !== RESPONSIVE_FULL_WIDTH_NAME ? classes.actions : classes.fullWidthActions}>
