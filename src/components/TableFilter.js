@@ -372,7 +372,7 @@ class TableFilter extends React.Component {
   };
 
   render() {
-    const { classes, columns, options, customFooter, filterList, components = {} } = this.props;
+    const { classes, columns, options, customFooter, filterList, filterData, components = {} } = this.props;
     const textLabels = options.textLabels.filter;
 
     if(options.filterType === "inline") {
@@ -380,7 +380,7 @@ class TableFilter extends React.Component {
         <>
           {
             components.TableToolbarCustomFilter ?
-            components.TableToolbarCustomFilter({handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters})
+            components.TableToolbarCustomFilter({filterData:filterData, columns: columns, handleMultiselectChange: this.handleMultiselectChange, resetFilters: this.resetFilters})
             :
             <Grid container direction="row" justifyContent="flex-start" alignItems="center" spacing={4}>
               {columns.map((column, index) => {
